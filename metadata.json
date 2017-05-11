@@ -1,0 +1,27 @@
+{
+  "name": "mrsmn-rinetd",
+  "version": "0.1",
+  "author": "mrsmn",
+  "summary": "Install and manage rinetd(8) via Puppet",
+  "license": "Apache-2.0",
+  "description": "Install and manage rinetd(8) via Puppet",
+  "source": "https://github.com/mrsmn/puppet-rinetd.git",
+  "project_page": "https://github.com/mrsmn/puppet-rinetd",
+  "issues_url": "https://github.com/mrsmn/puppet-rinetd/issues",
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "Ubuntu"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "dependencies": [
+  ]
+}
