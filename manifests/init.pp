@@ -115,16 +115,16 @@ class rinetd(
             ensure     => $service_ensure,
             enable     => $service_enable,
             hasrestart => true,
-            require => Package['rinetd']
+            require    => Package['rinetd']
         }
     }
 
     file { 'rinetd_conf':
-        ensure => file,
-        owner => 'root',
-        group => 'root',
+        ensure  => file,
+        owner   => 'root',
+        group   => 'root',
         mode    => '0644',
-        path => '/etc/rinetd.conf',
+        path    => '/etc/rinetd.conf',
         content => template('rinetd/rinetd.conf.erb'),
         require => Package['rinetd'],
         notify  => $service_notify_real,
