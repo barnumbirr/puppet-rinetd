@@ -62,10 +62,18 @@ class rinetd(
     $service_restart = true,
 ) {
 
+    validate_array($allow)
+    validate_array($deny)
+    validate_array($rules)
+
     validate_bool($autoupgrade)
     validate_bool($logcommon)
     validate_bool($service_manage)
     validate_bool($service_restart)
+
+    validate_absolute_path($logfile)
+
+    validate_string($ensure)
 
     case $ensure {
         /(present)/: {
@@ -82,8 +90,13 @@ class rinetd(
             $service_ensure = 'stopped'
             $service_enable = false
         }
+        /(purged)/: {
+            $package_ensure = 'purged'
+            $service_ensure = 'stopped'
+            $service_enable = false
+        }
         default: {
-            fail('ensure parameter must be present or absent')
+            fail('ensure parameter must be present, absent or purged')
         }
     }
 
