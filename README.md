@@ -90,7 +90,7 @@ rinetd::logcommon: true
 | logcommon           | boolean | false               | use web-server style logfile format |
 | ensure              | string  | present             | latest,present or absent |
 | service_manage      | boolean | true                | manage rinetd service state |
-| service_restart     | boolean | undef               | manage service restart |
+| service_restart     | boolean | true                | manage service restart |
 
 ## License:
 
