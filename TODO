@@ -1,0 +1,3 @@
+- Fix package removal bug
+- create distinct allow/deny and forwarding.allow/forwarding.deny rules
+  see https://www.boutell.com/rinetd/
