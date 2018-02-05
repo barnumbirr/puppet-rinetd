@@ -1,13 +1,13 @@
 {
-  "name": "mrsmn-rinetd",
+  "name": "barnumbirr-rinetd",
   "version": "0.0.1",
-  "author": "mrsmn",
+  "author": "barnumbirr",
   "summary": "Install and manage rinetd(8) via Puppet",
   "license": "Apache-2.0",
   "description": "Install and manage rinetd(8) via Puppet",
-  "source": "https://github.com/mrsmn/puppet-rinetd.git",
-  "project_page": "https://github.com/mrsmn/puppet-rinetd",
-  "issues_url": "https://github.com/mrsmn/puppet-rinetd/issues",
+  "source": "https://github.com/barnumbirr/puppet-rinetd.git",
+  "project_page": "https://github.com/barnumbirr/puppet-rinetd",
+  "issues_url": "https://github.com/barnumbirr/puppet-rinetd/issues",
   "tags": [
     "networking",
     "TCP",
