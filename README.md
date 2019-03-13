@@ -1,6 +1,18 @@
 # puppet-rinetd
 
-Install and manage rinetd(8) via Puppet.
+[![Puppet Forge](https://img.shields.io/puppetforge/v/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
+[![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
+[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
+
+1. [Description](#description)
+2. [Usage - Configuration options](#usage)
+    * [Class Parameters](#class-parameters)
+4. [Limitations - OS compatibility, etc.](#limitations)
+5. [License](#license)
+
+## Description
+
+Install and manage [rinetd(8) - internet “redirection server”](https://www.boutell.com/rinetd/) via Puppet.
 
 ## Usage
 
@@ -19,7 +31,7 @@ class { 'rinetd':
 }
 ```
 
-#### Using hiera
+##### Using hiera
 
 ```puppet
 rinetd::allow:
@@ -42,7 +54,7 @@ class { 'rinetd':
 }
 ```
 
-#### Using hiera
+##### Using hiera
 
 ```puppet
 rinetd::rules:
@@ -58,7 +70,7 @@ class { 'rinetd':
 }
 ```
 
-#### Using hiera
+##### Using hiera
 
 ```puppet
 rinetd::logfile: '/var/log/example.log'
@@ -72,13 +84,13 @@ class { 'rinetd':
 }
 ```
 
-#### Using hiera
+##### Using hiera
 
 ```puppet
 rinetd::logcommon: true
 ```
 
-## rinetd class parameters
+### Class Parameters
 
 | Parameter           | Type    | Default             | Description |
 | :-------------------| :------ |:------------------- | :---------- |
@@ -92,10 +104,16 @@ rinetd::logcommon: true
 | service_manage      | boolean | true                | manage rinetd service state |
 | service_restart     | boolean | true                | manage service restart |
 
+## Limitations
+
+This module is currently only written to work on Debian based operating
+systems, although it may work on others. The supported Puppet versions are
+defined in the [metadata.json](metadata.json)
+
 ## License:
 
 ```
-Copyright 2017-2018 Martin Simon
+Copyright 2017-2019 Martin Simon
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

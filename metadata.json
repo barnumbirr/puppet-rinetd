@@ -1,6 +1,6 @@
 {
   "name": "barnumbirr-rinetd",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "author": "barnumbirr",
   "summary": "Install and manage rinetd(8) via Puppet",
   "license": "Apache-2.0",
@@ -25,13 +25,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">= 3.0.0 < 5.0.0"
+      "version_requirement": ">= 4.10.0 < 7.0.0"
     }
   ],
-  "dependencies": [
-    {
-      "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.6.0 < 5.0.0"
-    }
-  ]
 }
