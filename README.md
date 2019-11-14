@@ -2,7 +2,6 @@
 
 [![Puppet Forge](https://img.shields.io/puppetforge/v/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
 [![Puppet Forge - downloads](https://img.shields.io/puppetforge/dt/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
-[![Puppet Forge - scores](https://img.shields.io/puppetforge/f/barnumbirr/rinetd.svg)](https://forge.puppetlabs.com/barnumbirr/rinetd)
 
 1. [Description](#description)
 2. [Usage - Configuration options](#usage)
@@ -12,7 +11,7 @@
 
 ## Description
 
-Install and manage [rinetd(8) - internet “redirection server”](https://www.boutell.com/rinetd/) via Puppet.
+Install and manage [rinetd(8) - internet “redirection server”](https://github.com/boutell/rinetd) via Puppet.
 
 ## Usage
 
@@ -33,7 +32,7 @@ class { 'rinetd':
 
 ##### Using hiera
 
-```puppet
+```yaml
 rinetd::allow:
   - '192.168.178.1'
   - '10.24.0.1'
@@ -56,7 +55,7 @@ class { 'rinetd':
 
 ##### Using hiera
 
-```puppet
+```yaml
 rinetd::rules:
   - '192.168.178.1 8080 10.24.0.1 443'
   - '10.24.42.1 5901 192.168.7.49 3456'
@@ -86,7 +85,7 @@ class { 'rinetd':
 
 ##### Using hiera
 
-```puppet
+```yaml
 rinetd::logcommon: true
 ```
 
@@ -95,12 +94,11 @@ rinetd::logcommon: true
 | Parameter           | Type    | Default             | Description |
 | :-------------------| :------ |:------------------- | :---------- |
 | allow               | array   | []                  | set allow rules |
-| autoupgrade         | boolean | false               | ugrade package automatically if there is a newer version |
 | deny                | array   | []                  | set deny rules |
 | rules               | array   | []                  | set forwarding rules |
 | logfile             | string  | /var/log/rinetd.log | set logfile path |
 | logcommon           | boolean | false               | use web-server style logfile format |
-| ensure              | string  | present             | latest,present or absent |
+| package_ensure      | string  | present             | latest,present or absent |
 | service_manage      | boolean | true                | manage rinetd service state |
 | service_restart     | boolean | true                | manage service restart |
 

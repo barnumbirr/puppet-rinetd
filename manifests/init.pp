@@ -32,8 +32,8 @@
 #     Activate web server-style "common log format" logging.
 #     Default: false
 #
-#   [*ensure*]
-#     Ensure if present or absent.
+#   [*package_ensure*]
+#     Ensure present, latest or absent.
 #     Default: present
 #
 #   [*service_manage*]
@@ -51,53 +51,22 @@
 #   See README
 #
 class rinetd(
-    $allow           = [],
-    $autoupgrade     = false,
-    $deny            = [],
-    $rules           = [],
-    $logfile         = '/var/log/rinetd.log',
-    $logcommon       = false,
-    $ensure          = 'present',
-    $service_manage  = true,
-    $service_restart = true,
+    Array $allow                                        = [],
+    Array $deny                                         = [],
+    Array $rules                                        = [],
+    Stdlib::Absolutepath $logfile                       = '/var/log/rinetd.log',
+    Boolean $logcommon                                  = false,
+    Enum['present', 'latest', 'absent'] $package_ensure = 'present',
+    Boolean $service_manage                             = true,
+    Boolean $service_restart                            = true,
 ) {
 
-    validate_array($allow)
-    validate_array($deny)
-    validate_array($rules)
-
-    validate_bool($autoupgrade)
-    validate_bool($logcommon)
-    validate_bool($service_manage)
-    validate_bool($service_restart)
-
-    validate_absolute_path($logfile)
-
-    validate_string($ensure)
-
-    case $ensure {
-        /(present)/: {
-            if $autoupgrade == true {
-                $package_ensure = 'latest'
-            } else {
-                $package_ensure = 'present'
-            }
-            $service_ensure = 'running'
-            $service_enable = true
-        }
-        /(absent)/: {
-            $package_ensure = 'absent'
-            $service_ensure = 'stopped'
-            $service_enable = false
-        }
-        /(purged)/: {
-            $package_ensure = 'purged'
-            $service_ensure = 'stopped'
-            $service_enable = false
-        }
-        default: {
-            fail('ensure parameter must be present, absent or purged')
-        }
+    if $package_ensure == 'absent' {
+        $service_ensure = 'stopped'
+        $service_enable = false
+    } else {
+        $service_ensure = 'running'
+        $service_enable = true
     }
 
     package { 'rinetd':
