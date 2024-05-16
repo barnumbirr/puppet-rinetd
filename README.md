@@ -11,7 +11,7 @@
 
 ## Description
 
-Install and manage [rinetd(8) - internet “redirection server”](https://github.com/boutell/rinetd) via Puppet.
+Install and manage [rinetd(8) - internet “redirection server”](https://github.com/samhocevar/rinetd) via Puppet.
 
 ## Usage
 
@@ -25,8 +25,8 @@ class { 'rinetd': }
 
 ```puppet
 class { 'rinetd':
-    allow => ['192.168.178.1', '10.24.0.1', '10.24.42.1'],
-    deny => ['192.168.1.*'],
+    allow => ['192.168.178.1', '10.24.0.1', 'fe80:*'],
+    deny => ['192.168.1.*', '2001:618:*:e43f'],
 }
 ```
 
@@ -36,10 +36,11 @@ class { 'rinetd':
 rinetd::allow:
   - '192.168.178.1'
   - '10.24.0.1'
-  - '10.24.42.1'
+  - 'fe80:*'
 
 rinetd::deny:
   - '192.168.1.*'
+  - '2001:618:*:e43f'
 ```
 
 ### Set forwarding rules
@@ -48,7 +49,8 @@ rinetd::deny:
 class { 'rinetd':
     rules => [
         '192.168.178.1 8080 10.24.0.1 443',
-        '10.24.42.1 5901 192.168.7.49 3456',
+        '10.24.42.1 5901/udp 192.168.7.49 3456/udp',
+        '::1 80 192.168.1.2 80 [timeout=1200]'
     ],
 }
 ```
@@ -58,7 +60,8 @@ class { 'rinetd':
 ```yaml
 rinetd::rules:
   - '192.168.178.1 8080 10.24.0.1 443'
-  - '10.24.42.1 5901 192.168.7.49 3456'
+  - '10.24.42.1 5901/udp 192.168.7.49 3456/udp'
+  - '::1 80 192.168.1.2 80 [timeout=1200]'
 ```
 
 ### Set logfile path
@@ -111,7 +114,7 @@ defined in the [metadata.json](metadata.json)
 ## License:
 
 ```
-Copyright 2017-2020 Martin Simon
+Copyright 2017-2024 Martin Simon
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -124,4 +127,15 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+```
+
+## Buy me a coffee?
+
+If you feel like buying me a coffee (or a beer?), donations are welcome:
+
+```
+BTC : bc1qq04jnuqqavpccfptmddqjkg7cuspy3new4sxq9
+DOGE: DRBkryyau5CMxpBzVmrBAjK6dVdMZSBsuS
+ETH : 0x2238A11856428b72E80D70Be8666729497059d95
+LTC : MQwXsBrArLRHQzwQZAjJPNrxGS1uNDDKX6
 ```

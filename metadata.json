@@ -1,6 +1,6 @@
 {
   "name": "barnumbirr-rinetd",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "barnumbirr",
   "summary": "Install and manage rinetd(8) via Puppet",
   "license": "Apache-2.0",
@@ -10,42 +10,43 @@
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
-      "version_requirement": ">=2.6.0 < 7.0.0"
+      "version_requirement": ">= 9.0.0 < 10.0.0"
     }
   ],
   "operatingsystem_support": [
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "8",
-        "9",
-        "10"
+        "10",
+        "11",
+        "12"
       ]
     },
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
-        "14.04",
-        "16.04",
         "18.04",
-        "19.04"
+        "20.04",
+        "22.04",
+        "24.04"
       ]
     }
   ],
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=4.10.0 < 7.0.0"
+      "version_requirement": ">= 7.0.0 < 9.0.0"
     }
   ],
   "description": "Install and manage rinetd(8) via Puppet",
   "tags": [
     "networking",
     "TCP",
+    "UDP",
     "proxy",
     "rinetd"
   ],
-  "pdk-version": "1.14.1",
-  "template-url": "pdk-default#1.10.0",
-  "template-ref": "1.10.0-0-gbba9ac3"
+  "template-url": "https://github.com/puppetlabs/pdk-templates.git#main",
+  "template-ref": "heads/main-0-g79a2f93",
+  "pdk-version": "3.0.0"
 }
